@@ -184,12 +184,32 @@ int git_signature_default(git_signature **out, git_repository *repo)
 	if ((error = git_repository_config_snapshot(&cfg, repo)) < 0)
 		return error;
 
+    /* getting the username and email from the environment??? */
+    const char *env_user_name, *env_user_email;
+
+    if(!(error = )) {
+
+    } else {
+
+    }
+
 	if (!(error = git_config_get_string(&user_name, cfg, "user.name")) &&
 		!(error = git_config_get_string(&user_email, cfg, "user.email")))
 		error = git_signature_now(out, user_name, user_email);
 
 	git_config_free(cfg);
 	return error;
+}
+
+
+int git_signature_author_env(git_signature **out, git_repository *repo)
+{
+
+}
+
+int git_signature_committer_env(git_signature **out, git_repository *repo)
+{
+
 }
 
 int git_signature__parse(git_signature *sig, const char **buffer_out,
